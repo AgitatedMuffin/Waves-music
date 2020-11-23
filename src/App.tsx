@@ -1,4 +1,7 @@
 import React from 'react';
+// Adding Components
+import song from './components/song'
+import player from './components/player'
 
 function App() {
   return (
