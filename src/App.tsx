@@ -1,12 +1,16 @@
 import React from 'react';
+//Importing files
+import "./styles/App.scss"
+
 // Adding Components
-import song from './components/song'
-import player from './components/player'
+import Song from './components/song'
+import Player from './components/player'
 
 function App() {
   return (
     <div className="App">
-      <h1>Music App</h1>
+      <Song />
+      <Player />
     </div>
   );
 }
