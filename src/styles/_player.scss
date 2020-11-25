@@ -1,35 +1,31 @@
 .player{
     min-height: 20vh;
-    background-color: beige;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
     .seek{
-        background-color: rebeccapurple;
         display: flex;
         flex-direction: row;
         justify-content: center;
-        width: 70%;
+        width: 50%;
         input{
             width: 100%;
             cursor: pointer;
             padding: 1rem 0rem;
         }
         p{
-            background-color: coral;
             padding: 1rem;
         }
     }
 
      .play-control{
-         background-color: red;
          display: flex;
          flex-direction: row;
          justify-content: space-between;
          padding: 1rem;
-         width: 50%;
+         width: 30%;
          svg{
              cursor: pointer;
          }

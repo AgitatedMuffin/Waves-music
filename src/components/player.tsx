@@ -1,8 +1,28 @@
-import React from 'react'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleLeft, faAngleRight, faPlay } from "@fortawesome/free-solid-svg-icons"
+import React, { useRef, useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft, faAngleRight, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
+import setMediaSession from "../utils/mediaSession"
 
-const Player = () => {
+const Player = ({ currentSong, isPlaying, setIsPlaying }: any) => {
+    // states
+    const [playIcon, setPlayIcon] = useState(faPlay);
+    // Refs
+    const audioRef = useRef<HTMLAudioElement>(document.createElement("audio"));
+    //Event Handlers
+    function onPlayHandler() {
+        if (isPlaying) {
+            audioRef.current.pause();
+            setPlayIcon(faPlay)
+        }
+        else {
+            audioRef.current.play();
+            setPlayIcon(faPause)
+        }
+        setIsPlaying(!isPlaying)
+    }
+    setMediaSession(currentSong, onPlayHandler)
+
+
     return (
         <div className='player'>
             <div className="seek">
@@ -12,12 +32,13 @@ const Player = () => {
             </div>
             <div className="play-control">
                 <FontAwesomeIcon className="skipBack" size="2x" icon={faAngleLeft} />
-                <FontAwesomeIcon className="play" size="2x" icon={faPlay} />
+                <FontAwesomeIcon onClick={onPlayHandler} className="play" size="2x" icon={playIcon} />
                 <FontAwesomeIcon className="skipForward" size="2x" icon={faAngleRight} />
             </div>
-
+            <audio ref={audioRef} src={currentSong.audio}></audio>
         </div>
     )
 }
+
 
 export default Player;

@@ -8,5 +8,24 @@
 
 .song-container{
     height: 60vh;
-    @include center()
+    @include center();
+    img{
+        height: 275px;
+        border-radius: 50%;
+        margin: 30px;
+        filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.199));
+    }
+    h1{
+        font-size: 2rem;
+        padding-bottom: 10px;
+    }
+    h2{
+        font-size: 1rem;
+    }
+    
+}
+
+.rotate-cover{
+    transform: rotate(170);
+    animation-duration: 4s;
 }
