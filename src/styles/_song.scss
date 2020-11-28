@@ -7,13 +7,13 @@
 }
 
 .song-container{
-    height: 60vh;
+    min-height: 60vh;
     @include center();
     img{
-        height: 275px;
-        border-radius: 50%;
+        max-height: 275px;
         margin: 30px;
-        filter: drop-shadow(10px 10px 4px rgba(0, 0, 0, 0.199));
+        mask: url('../svg/disc-svgrepo-com.svg');
+        mask-size: cover;
     }
     h1{
         font-size: 2rem;
@@ -21,11 +21,21 @@
     }
     h2{
         font-size: 1rem;
-    }
-    
+    }  
 }
 
-.rotate-cover{
-    transform: rotate(170);
-    animation-duration: 4s;
+.animate{
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; 
 }
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}   
