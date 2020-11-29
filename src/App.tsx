@@ -15,13 +15,21 @@ function App() {
   const [songs, setSongs] = useState(data())
   const [currentSong, setCurrentSong] = useState(data()[0])
   const [isPlaying, setIsPlaying] = useState(false)
+  const [songInfo, setSongInfo] = useState({
+    currentTime: 0,
+    duration: 0,
+  })
+  const [inputClicked, setInputClicked] = useState(false)
 
 
 
   return (
     <div className="App">
-      <Song currentSong={currentSong} isPlaying={isPlaying} />
-      <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying} />
+      <Song currentSong={currentSong} isPlaying={isPlaying} songInfo={songInfo} inputClicked={inputClicked} />
+      <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+        songInfo={songInfo} setSongInfo={setSongInfo}
+        inputClicked={inputClicked} setInputClicked={setInputClicked}
+      />
     </div>
   );
 }

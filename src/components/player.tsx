@@ -2,18 +2,16 @@ import React, { useRef, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight, faPause, faPlay } from "@fortawesome/free-solid-svg-icons";
 import setMediaSession from "../utils/mediaSession"
+import { getReadableTime } from "../utils/functions"
+import { Props } from 'framer-motion/types/types';
 
-const Player = ({ currentSong, isPlaying, setIsPlaying }: any) => {
+const Player = ({ currentSong, isPlaying, setIsPlaying, songInfo, setSongInfo, inputClicked, setInputClicked }: Props) => {
 
     //Set MediaSession
     setMediaSession(currentSong, onPlayHandler)
 
     // states
     const [playIcon, setPlayIcon] = useState(faPlay);
-    const [songInfo, setSongInfo] = useState({
-        currentTime: 0,
-        duration: 0,
-    })
 
     // Refs
     const audioRef = useRef<HTMLAudioElement>(document.createElement("audio"));
@@ -41,12 +39,9 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }: any) => {
         audioRef.current.currentTime = currentTime
         setSongInfo({ ...songInfo, currentTime })
     }
-    function getReadableTime(value: number): string {
-        const readableTime = Math.floor(value / 60) + ":" + ("0" + Math.floor(value % 60)).slice(-2);
-        return (readableTime)
-
+    function onMouseHoldHandler() {
+        setInputClicked(!inputClicked)
     }
-
 
 
     return (
@@ -54,7 +49,8 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }: any) => {
             <div className="seek">
                 <p>{getReadableTime(songInfo.currentTime)}</p>
                 <input type="range" name="time" min={0} max={songInfo.duration}
-                    value={songInfo.currentTime} onChange={onDragHandler} />
+                    value={songInfo.currentTime} onChange={onDragHandler}
+                    onMouseDown={onMouseHoldHandler} onMouseUp={onMouseHoldHandler} />
                 <p>{getReadableTime(songInfo.duration)}</p>
             </div>
             <div className="play-control">
