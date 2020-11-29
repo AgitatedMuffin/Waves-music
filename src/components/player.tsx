@@ -4,8 +4,10 @@ import { faAngleLeft, faAngleRight, faPause, faPlay } from "@fortawesome/free-so
 import setMediaSession from "../utils/mediaSession"
 import { getReadableTime } from "../utils/functions"
 import { Props } from 'framer-motion/types/types';
+import data from "../utils/utils"
 
-const Player = ({ currentSong, isPlaying, setIsPlaying, songInfo, setSongInfo, inputClicked, setInputClicked }: Props) => {
+
+const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, songInfo, setSongInfo, inputClicked, setInputClicked }: Props) => {
 
     //Set MediaSession
     setMediaSession(currentSong, onPlayHandler)
@@ -56,7 +58,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying, songInfo, setSongInfo, i
             <div className="play-control">
                 <FontAwesomeIcon className="skipBack" size="2x" icon={faAngleLeft} />
                 <FontAwesomeIcon onClick={onPlayHandler} className="play" size="2x" icon={playIcon} />
-                <FontAwesomeIcon className="skipForward" size="2x" icon={faAngleRight} />
+                <FontAwesomeIcon onClick={() => setCurrentSong(data()[4])} className="skipForward" size="2x" icon={faAngleRight} />
             </div>
             <audio onTimeUpdate={onTimeChangeHandler} onLoadedMetadata={onTimeChangeHandler} ref={audioRef}
                 src={currentSong.audio}></audio>

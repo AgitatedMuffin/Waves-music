@@ -10,18 +10,18 @@ const Song = ({ currentSong, isPlaying, songInfo, inputClicked }: any) => {
     const [rotation, setRotation] = useState(0)
     //Effects
     useEffect(() => {
-        if (inputClicked) {
-            setRotation(turnToDegrees(songInfo.currentTime, songInfo.duration, 1))
+        if (inputClicked || !isPlaying) {
+            setRotation(turnToDegrees(songInfo.currentTime, songInfo.duration, songInfo.duration / 4))
         }
-    }, [inputClicked, isPlaying, rotation, songInfo.currentTime, songInfo.duration])
-
+    }, [inputClicked, isPlaying, songInfo.currentTime, songInfo.duration])
 
 
     return (
         <div className='song-container'  >
             <motion.img ref={imgRef} src={currentSong.cover} alt="Album cover"
-                animate={isPlaying ? { rotate: [rotation, rotation + 360] } : { rotate: rotation }}
-                transition={isPlaying ? { repeat: Infinity, duration: 4, ease: "linear" } : { repeat: 0 }}
+                animate={isPlaying ?
+                    inputClicked ? { rotate: rotation } : { rotate: [rotation, rotation + 360] } : { rotate: rotation }}
+                transition={isPlaying ? inputClicked ? { repeat: 0 } : { repeat: Infinity, duration: 4, ease: "linear" } : { repeat: 0 }}
             />
             <h1>{currentSong.name}</h1>
             <h2>{currentSong.artist}</h2>

@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Song currentSong={currentSong} isPlaying={isPlaying} songInfo={songInfo} inputClicked={inputClicked} />
-      <Player currentSong={currentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
+      <Player currentSong={currentSong} setCurrentSong={setCurrentSong} isPlaying={isPlaying} setIsPlaying={setIsPlaying}
         songInfo={songInfo} setSongInfo={setSongInfo}
         inputClicked={inputClicked} setInputClicked={setInputClicked}
       />
