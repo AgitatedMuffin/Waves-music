@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { animate, AnimationControls, motion, useAnimation, useMotionValue } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { turnToDegrees } from "../utils/functions"
 
 
@@ -7,8 +7,8 @@ const Song = ({ currentSong, isPlaying, songInfo, inputClicked }: any) => {
 
     //Hooks
     const imgRef = useRef<HTMLImageElement>(document.createElement("img"));
-    //Effects
     const [rotation, setRotation] = useState(0)
+    //Effects
     useEffect(() => {
         if (inputClicked) {
             setRotation(turnToDegrees(songInfo.currentTime, songInfo.duration, 1))
