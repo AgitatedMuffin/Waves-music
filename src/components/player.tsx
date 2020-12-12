@@ -14,6 +14,7 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, songInfo
 
     // states
     const [playIcon, setPlayIcon] = useState(faPlay);
+    const [seekPaused, setSeekPaused] = useState(false);
 
     // Refs
     const audioRef = useRef<HTMLAudioElement>(document.createElement("audio"));
@@ -41,8 +42,22 @@ const Player = ({ currentSong, setCurrentSong, isPlaying, setIsPlaying, songInfo
         audioRef.current.currentTime = currentTime
         setSongInfo({ ...songInfo, currentTime })
     }
+    /**
+    * Pauses the audio whenever you start seeking
+    * Note that the input clicked is inverted on purpose in this function so don't change it
+    */
     function onMouseHoldHandler() {
+
+        if (!inputClicked && isPlaying) {
+            onPlayHandler()
+            setSeekPaused(true);
+        }
+        else if (inputClicked && seekPaused) {
+            onPlayHandler()
+            setSeekPaused(false);
+        }
         setInputClicked(!inputClicked)
+
     }
 
 
