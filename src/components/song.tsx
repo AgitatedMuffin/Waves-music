@@ -10,8 +10,11 @@ const Song = ({ currentSong, isPlaying, songInfo, inputClicked }: any) => {
     const [rotation, setRotation] = useState(0)
     //Effects
     useEffect(() => {
+        // Set rotation when we click or when it stops playing
         if (inputClicked || !isPlaying) {
-            setRotation(turnToDegrees(songInfo.currentTime, songInfo.duration, songInfo.duration / 4))
+            const currentDegrees = turnToDegrees(songInfo.currentTime, songInfo.duration, songInfo.duration / 4);
+            setRotation(currentDegrees);
+
         }
     }, [inputClicked, isPlaying, songInfo.currentTime, songInfo.duration])
 
