@@ -6,7 +6,7 @@ const LibrarySong = ({ Song }: any) => {
             <img src={Song.cover} alt="Album cover" />
             <div className="song-description">
                 <h3>{Song.name}</h3>
-                <h3>{Song.artist}</h3>
+                <h4>{Song.artist}</h4>
             </div>
         </div>
     )

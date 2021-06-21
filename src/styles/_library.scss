@@ -7,6 +7,12 @@
     box-shadow: 2px 2px 50px gray;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    background-color: white;
+    overflow: scroll;
+    h2{
+        padding-left: 1rem;
+        padding-bottom: 1rem;
+    }
 }
 
 .library-songs{
@@ -19,8 +25,11 @@
     display: flex;
     align-items: center;
     padding: 1rem;
-    background-color: aliceblue;
     padding-left: 1rem;
+    cursor: pointer;
+    &:hover{
+        background-color: aliceblue;
+    }
 
     // width: 256px;
     img{
@@ -30,11 +39,4 @@
         margin-right: 1rem;
     }
  
-}
-
-.song-description{
-    h3{
-        font-size: 1rem;
-        background-color: inherit;
-    }
 }
