@@ -27,7 +27,7 @@ const Song = ({ currentSong, isPlaying, songInfo, inputClicked }: any) => {
                 transition={isPlaying ? inputClicked ? { repeat: 0 } : { repeat: Infinity, duration: 4, ease: "linear" } : { repeat: 0 }}
             />
             <h1>{currentSong.name}</h1>
-            {/* <h2>{currentSong.artist}</h2> */}
+            <h2>{currentSong.artist}</h2>
         </div>
     )
 }
