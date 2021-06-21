@@ -11,7 +11,7 @@ function chillHop(): Album[] {
             id: uuidv4(),
             color: ["#7A7361", "#608C81"],
             audio: "https://mp3.chillhop.com/serve.php/?mp3=9913",
-            active: false
+            active: true
         },
         {
             name: "What Was Before",

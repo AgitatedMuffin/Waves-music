@@ -6,6 +6,7 @@ import "./styles/App.scss"
 // Adding Components
 import Song from './components/song'
 import Player from './components/player'
+import Library from './components/library';
 
 // Import util
 import data from "./utils/utils"
@@ -30,6 +31,7 @@ function App() {
         songInfo={songInfo} setSongInfo={setSongInfo}
         inputClicked={inputClicked} setInputClicked={setInputClicked}
       />
+      <Library songs={songs} />
     </div>
   );
 }

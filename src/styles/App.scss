@@ -1,16 +1,20 @@
 @import './player';
 @import './song';
+@import './library';
 
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Lato' ,Arial, Helvetica, sans-serif;
-    background-color: rgb(240, 240, 240);
 }
 
 h1,h2,p{
     color: rgb(50, 50, 50);
+}
+
+body{
+    background-color: rgb(240, 240, 240);
 }
 
 .app{
